@@ -1,0 +1,39 @@
+.alert {
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  vertical-align: middle;
+  background-image: none;
+  .alert-closebtn {
+    position: absolute;
+    right: 14px;
+    top: 4px;
+    cursor: pointer;
+  }
+  .alert-title {
+    font-weight: $font-weight-bold;
+  }
+}
+.alert-success {
+  @include alert-style($success, $success, $white)
+}
+.alert-danger {
+  @include button-style($danger, $danger, $white);
+}
+.alert-warning {
+  @include alert-style($warning, $warning, $blue)
+}
+.alert-default {
+  @include button-style($gray-100, $gray-100, $gray-600);
+}
+// .alert-show {
+//   display: none;
+// }
+.window-close {
+  &:hover {
+    transform: rotate(180deg);
+    transition: transform 300ms ease-in-out;
+  }
+}
