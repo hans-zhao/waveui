@@ -130,8 +130,22 @@ peerDependencies特点
 3. 使用husky来push和commit（eslint  prettier lint-staged  commitlint等工具检查代码规范、风格，日志格式）
 
 ### 最后静态文档生成和部署到静态服务器
-travis（https://www.travis-ci.com/）  netlify 
-
 
 ![image-20220104160305798](C:\Users\bocha\AppData\Roaming\Typora\typora-user-images\image-20220104160305798.png)
 
+
+
+### ci/cd工具
+
+类型1：应用类
+【测试 lint/e2e测试】  commit - push ->  build/dist + publish ->  静态站点
+
+
+类型2：工具库类 
+【测试 lint】 commit - push ->  build/dist +  publish -> npm   ---->   build/sb + 静态站点文档(比如storybook) 
+
+
+
+使用github actions 监控git push，
+
+完成build->publish->npm；build-storybook->publish->github pages
