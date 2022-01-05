@@ -9,7 +9,7 @@ on:
 # jobs 表示要执行的一项或者多项任务
 jobs:
   # 任务名，可自定义
-  build-and-deploy:
+  build-and-deploy-sb:
     # runs-on字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下。
     runs-on: ubuntu-latest
     # steps表示执行步骤

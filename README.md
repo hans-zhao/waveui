@@ -135,6 +135,12 @@ peerDependencies特点
 
 
 
+- 当要发补丁版时可运行命令：`npm version patch`
+- 当要发小版本时可运行命令：`npm version minor`
+- 当要发大版本时可运行命令：`npm version major`
+
+
+
 ### ci/cd工具
 
 类型1：应用类
@@ -149,3 +155,13 @@ peerDependencies特点
 使用github actions 监控git push，
 
 完成build->publish->npm；build-storybook->publish->github pages
+
+需要github配置项目的token、本地项目配置workflows、package.json配置homepage 等
+workflows可以编写多个yml文件，另外可以在不同分支上发布npm/sb（本地-test-release）
+
+
+一个应用类项目，在正式发布前，也可以先发布到类似github pages用于测试（当然需要动态服务器）
+
+sb静态页面：https://hans-zhao.github.io/waveui/
+
+npm项目：will_wave
