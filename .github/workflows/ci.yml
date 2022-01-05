@@ -1,17 +1,30 @@
-name: GitHub Actions Demo
-on: [push]
+# name 可以自定义
+name: CI
+# 指定触发workflow的条件
+# 下面的意思就是在监听到main分支push操作的时候运行
+on:
+  push:
+    branches: [ main ]
+
+# jobs 表示要执行的一项或者多项任务
 jobs:
-  Explore-GitHub-Actions:
+  # 任务名，可自定义
+  build-and-deploy:
+    # runs-on字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下。
     runs-on: ubuntu-latest
+    # steps表示执行步骤
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+    # 检出代码，这里用了 actions/checkout@master 库来完成
+    - name: Checkout
+      uses: actions/checkout@master
+   # 这里展示了如何执行多条命令
+    - name: Install and Build
+      run: |
+        npm install
+        npm run build
+    # 这里引用了别人写好的发布库，具体参数信息可以查阅上面的链接
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with: 
+        branch: gh-pages
+        folder: dist
