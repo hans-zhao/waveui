@@ -10,10 +10,10 @@
     "React",
     "UI"
   ],
-  "homepage": "https://gitee.com/olyluck/react17_component_liabry",
+  "homepage": "https://github.com/hans-zhao/waveui",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/olyluck/react17_component_liabry"
+    "url": "https://github.com/hans-zhao/waveui"
   },
   "files": [
     "dist"
