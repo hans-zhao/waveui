@@ -1,6 +1,6 @@
 
 
-***打包发布还是要编译为js/css格式，这样被引用之后，浏览器可以识别***
+
 
 ## Available Scripts
 
@@ -68,17 +68,19 @@ You might have more than one copy of React in the same app 问题
 
 ## 发布到npm
 
-1. 切换到npm源 npm config set registry https://registry.npmjs.org/  （淘宝源 npm config set registry http://registry.npm.taobao.org/）
+1. ***打包发布还是要编译为js/css格式，这样被引用之后，浏览器才可以识别，且dependencies中的依赖也被打包***
 
-2. 登录npm（注意发包的name必须独有，否则会被认为账号错误）
+2. 切换到npm源 npm config set registry https://registry.npmjs.org/  （淘宝源 npm config set registry http://registry.npm.taobao.org/）
 
-3. **修改package.json**
+3. 登录npm（注意发包的name必须独有，否则会被认为账号错误）
+
+4. **修改package.json**
 
    files字段：哪些文件需要publish，
 
    prepublish命令：钩子函数，在publish前自动运行（用于publish之前重新build）
 
-4. **peerDependencies**
+5. **peerDependencies**
 
    ```
    {
@@ -135,12 +137,6 @@ peerDependencies特点
 
 
 
-- 当要发补丁版时可运行命令：`npm version patch`
-- 当要发小版本时可运行命令：`npm version minor`
-- 当要发大版本时可运行命令：`npm version major`
-
-
-
 ### ci/cd工具
 
 类型1：应用类
@@ -156,12 +152,9 @@ peerDependencies特点
 
 完成build->publish->npm；build-storybook->publish->github pages
 
-需要github配置项目的token、本地项目配置workflows、package.json配置homepage 等
-workflows可以编写多个yml文件，另外可以在不同分支上发布npm/sb（本地-test-release）
+配合semantic-release：自动化分布npm
+https://www.cnblogs.com/xueyubao/p/14823168.html
 
+storybook静态文档：https://hans-zhao.github.io/waveui/
 
-一个应用类项目，在正式发布前，也可以先发布到类似github pages用于测试（当然需要动态服务器）
-
-sb静态页面：https://hans-zhao.github.io/waveui/
-
-npm项目：will_wave
+npm库：will_wave
